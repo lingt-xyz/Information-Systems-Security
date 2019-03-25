@@ -4,9 +4,10 @@ from urllib3.util import connection
 
 my_resolver = dns.resolver.Resolver(configure=False)
 # 8.8.8.8 is Google's public DNS server
-my_resolver.nameservers = ['8.8.8.8']
+# 1.2.4.8
+my_resolver.nameservers = ['210.22.66.253']
 
-answer = my_resolver.query('baidu.com', 'A')
+answer = my_resolver.query('google.com', 'A')
 
 pprint(vars(answer))
 
