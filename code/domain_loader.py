@@ -3,10 +3,8 @@ Read domain name from website
 """
 import requests
 from bs4 import BeautifulSoup
-import time
-import os.path
 
-class DomainLoader:
+class domain_loader:
     alexa_root = 'https://www.alexa.com/'
 
     def __init__(self):
@@ -75,40 +73,3 @@ class DomainLoader:
 
     def get_block_domain_from_wiki(self):
         pass
-
-
-class FileHandler:
-    def __init__(self):
-        pass
-
-    def write(self, fname, domains):
-        """
-        write the given input to the given file
-        """
-        fname = fname + '-' + time.strftime("%Y%m%d")
-        with open(fname, 'a') as f:
-            for d in domains:
-                f.write(d+'\n')
-
-    def lookup_file(self, fname):
-        """
-        check whether the given file exists
-        """
-        timestr = time.strftime("%Y%m%d")
-        fname = './' + fname + '-' + timestr
-        if os.path.isfile(fname):
-            return True
-        else:
-            return False
-
-    def read(self, fname):
-        """
-        read all lines from the given file
-        """
-        timestr = time.strftime("%Y%m%d")
-        fname = './' + fname + '-' + timestr
-        if os.path.isfile(fname):
-            with open(fname) as f:
-                return f.readlines()
-        else:
-            return None
