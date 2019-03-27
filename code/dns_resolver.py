@@ -1,6 +1,7 @@
 # https://stackoverflow.com/questions/22609385/python-requests-library-define-specific-dns
 
 from dns.resolver import Resolver
+from dns.resolver import NoNameservers
 from dns.resolver import NXDOMAIN
 from dns.resolver import NoAnswer
 from dns.exception import Timeout
@@ -23,6 +24,8 @@ class dns_resolver:
             answers = r.query(host, 'A')
             for rdata in answers:
                 return str(rdata)
+        except NoNameservers:
+            return "NoNameservers"
         except NXDOMAIN:
             return "NonExist"
         except NoAnswer:
