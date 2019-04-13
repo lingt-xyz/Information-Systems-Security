@@ -17,13 +17,16 @@ class file_handler:
             for d in lines:
                 f.write(d+'\n')
 
-    def writeArray(self, fname, lines_array):
+    def writeArray(self, fname, lines_array, timestamp = False):
         """
         write the given input to the given file
         """
-        fname = fname + '-' + time.strftime("%Y%m%d")
-        if os.path.exists(fname):
-            os.remove(fname)
+        if timestamp:
+            fname = fname + '-' + time.strftime("%Y%m%d%H%M%S")
+        else:
+            fname = fname + '-' + time.strftime("%Y%m%d")
+            if os.path.exists(fname):
+                os.remove(fname)
         with open(fname, 'a') as f:
             for d in lines_array:
                 #d = "\t".join(d)
