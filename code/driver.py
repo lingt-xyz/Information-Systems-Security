@@ -104,6 +104,6 @@ for dns in dnss:
 for t in threads:
     t.join()
 
-feedback = sorted(feedback, key=lambda f:f[1])
+feedback = sorted(feedback, key=lambda f:f[0])
 io.writeArray("output", feedback, True)
 print("Exiting Main Thread")
